@@ -1,0 +1,24 @@
+<table class="table table-bordered" *ngIf="getStdArray.length > 0; else nostddata">
+    <thead>
+        <tr>
+            <td>Sr no</td>
+            <td>First Name</td>
+            <td>Last name</td>
+            <td>Email</td>
+            <td>Contact</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let std of getStdArray; let i = index">
+            <td>{{i +1}}</td>
+            <td>{{std.fname}}</td>
+            <td>{{std.lname}}</td>
+            <td>{{std.email}}</td>
+            <td>{{std.contact}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #nostddata>
+    <p class="alert alert-warning">No Student added yet!!!</p>
+</ng-template>

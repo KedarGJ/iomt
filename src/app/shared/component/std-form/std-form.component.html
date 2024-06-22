@@ -1,0 +1,50 @@
+<form #stdForm="ngForm" (ngSubmit)="onStdAdd()" >
+    <div class="form-group">
+        <label for="fname">First Name*</label>
+        <input type="text" name="fname" ngModel #fname="ngModel" pattern="[a-zA-Z]+" class="form-control" required>
+        <span class="text-danger" *ngIf="fname.touched && fname.hasError('required')">
+            First Name is required
+        </span>
+        <span class="text-danger" *ngIf="fname.dirty && fname.hasError('pattern')">
+            Invalid First Name
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="fname">Last Name*</label>
+        <input type="text" name="lname" ngModel #lname="ngModel" class="form-control" pattern="[a-zA-Z]+" required>
+        <span class="text-danger" *ngIf="lname.touched && lname.hasError('required')">
+            last Name is required
+        </span>
+        <span class="text-danger" *ngIf="lname.dirty && lname.hasError('pattern')">
+            invalid Last Name
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="fname">Email*</label>
+        <input type="text" name="email" ngModel #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" required>
+        <span class="text-danger" *ngIf="email.touched && email.hasError('required')">
+            Email is required
+        </span>
+        <span class="text-danger" *ngIf="email.dirty && email.hasError('pattern')">
+            invalid Email
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="fname">Contact*</label>
+        <input type="text" name="contact" ngModel #contact="ngModel"
+         pattern="^[0-9]{10}$"
+          class="form-control" required
+          minlength="10" maxlength="10">
+        <span class="text-danger" *ngIf="contact.touched && contact.hasError('required')">
+            contact is required
+        </span>
+        <span class="text-danger" *ngIf="contact.dirty && contact.hasError('pattern')">
+            invalid Contact
+        </span>
+        <span class="text-danger" *ngIf="contact.dirty && contact.hasError('minlength')">
+           Minimum length of contact should be {{contact.errors?.['minlength'].requiredLength}}
+           and actual length is {{contact.errors?.['minlength'].actualLength}}
+        </span>
+    </div>
+    <button class="btn btn-block btn-outline-info">Add Student</button>
+</form>
